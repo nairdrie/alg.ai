@@ -1,0 +1,21 @@
+ion-content{
+    background:var(--ion-color-light);
+    .title{
+        color:var(--ion-color-secondary);
+        font-weight: bold;
+        font-size: 22px;
+        margin-bottom: 10px;
+    }
+    .body{
+        color:var(--ion-color-secondary);
+    }
+}
+ion-footer{
+    text-align: center;
+    font-size: 11px;
+    color: var(--ion-color-secondary);
+    margin-bottom: 16px;
+    &:before{
+    background-image:none;
+    }
+}
