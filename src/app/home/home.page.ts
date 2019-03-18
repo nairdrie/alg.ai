@@ -1,4 +1,5 @@
 import { Component, ViewChild, ElementRef } from '@angular/core';
+import { Chart } from 'chart.js';
 
 declare var google;
 
@@ -9,9 +10,10 @@ declare var google;
 })
 export class HomePage {
 
-  @ViewChild('barCanvas') barCanvas;
+  @ViewChild('barCanvas', { read: ElementRef }) barCanvas:ElementRef;
   @ViewChild('rangeElement', { read: ElementRef }) rangeElement:ElementRef;
 
+  barChart: any;
   map: any;
   locationTitle: string;
   riskValue: string;
@@ -23,6 +25,7 @@ export class HomePage {
   detroitValues: number[];
   peleeValues: number[];
   catawbaValues: number[];
+  dayRange:any;
 
   selectedIcon = {
     url: "../../assets/selectedIcon.png", // url
@@ -88,7 +91,60 @@ export class HomePage {
         var value = _this.detroitValues[0];
         _this.riskValue = _this.valueToString(value);
         _this.riskCategory = _this.valueToCategory(value);
+        _this.dayRange = 1;
         //init graph
+
+        _this.barChart = new Chart(_this.barCanvas.nativeElement, {
+          type: 'bar',
+            data: {
+                labels: ["T", "F", "S", "S", "M", "T", "W", "T", "F", "S", "S", "M", "T", "W"],
+                datasets: [{
+                    label: 'Severity Index',
+                    data: _this.detroitValues,
+                    backgroundColor: [
+                        '#64639A',
+                        '#8E8BE9',
+                        '#8E8BE9',
+                        '#8E8BE9',
+                        '#8E8BE9',
+                        '#8E8BE9',
+                        '#8E8BE9',
+                        '#8E8BE9',
+                        '#8E8BE9',
+                        '#8E8BE9',
+                        '#8E8BE9',
+                        '#8E8BE9',
+                        '#8E8BE9',
+                        '#8E8BE9'
+                    ],
+                    borderWidth: 0
+                }]
+            },
+            options: {
+              legend:{
+                display:false
+              },
+              tooltips:{
+                enabled:false
+              },
+              onClick: function(e){
+                
+                var element = this.getElementAtEvent(e);
+                // changes only the color of the active object
+                
+              _this.dayRange = element[0]._index+1;
+          
+                },
+                scales: {
+                  xAxes: [{
+                    gridLines: {
+                        display:false
+                    }
+                  }],
+                 
+                }
+            }
+        });
       }); 
 
       var maumeeBay = new google.maps.Marker({
@@ -111,7 +167,60 @@ export class HomePage {
         var value = _this.maumeeValues[0];;
         _this.riskValue = _this.valueToString(value);
         _this.riskCategory = _this.valueToCategory(value);
+        _this.dayRange = 1;
         //init graph
+
+        _this.barChart = new Chart(_this.barCanvas.nativeElement, {
+          type: 'bar',
+            data: {
+                labels: ["T", "F", "S", "S", "M", "T", "W", "T", "F", "S", "S", "M", "T", "W"],
+                datasets: [{
+                    label: 'Severity Index',
+                    data: _this.maumeeValues,
+                    backgroundColor: [
+                        '#64639A',
+                        '#8E8BE9',
+                        '#8E8BE9',
+                        '#8E8BE9',
+                        '#8E8BE9',
+                        '#8E8BE9',
+                        '#8E8BE9',
+                        '#8E8BE9',
+                        '#8E8BE9',
+                        '#8E8BE9',
+                        '#8E8BE9',
+                        '#8E8BE9',
+                        '#8E8BE9',
+                        '#8E8BE9'
+                    ],
+                    borderWidth: 0
+                }]
+            },
+            options: {
+              legend:{
+                display:false
+              },
+              tooltips:{
+                enabled:false
+              },
+              onClick: function(e){
+                
+                var element = this.getElementAtEvent(e);
+                // changes only the color of the active object
+                
+              _this.dayRange = element[0]._index+1;
+          
+                },
+                scales: {
+                  xAxes: [{
+                    gridLines: {
+                        display:false
+                    }
+                  }],
+                 
+                }
+            }
+        }); 
       }); 
 
       var pointPeleeNationalPark = new google.maps.Marker({
@@ -134,8 +243,61 @@ export class HomePage {
         var value = _this.peleeValues[0];
         _this.riskValue = _this.valueToString(value);
         _this.riskCategory = _this.valueToCategory(value);
+        _this.dayRange = 1;
         //init graph
-      }); 
+
+        _this.barChart = new Chart(_this.barCanvas.nativeElement, {
+          type: 'bar',
+            data: {
+                labels: ["T", "F", "S", "S", "M", "T", "W", "T", "F", "S", "S", "M", "T", "W"],
+                datasets: [{
+                    label: 'Severity Index',
+                    data: _this.peleeValues,
+                    backgroundColor: [
+                        '#64639A',
+                        '#8E8BE9',
+                        '#8E8BE9',
+                        '#8E8BE9',
+                        '#8E8BE9',
+                        '#8E8BE9',
+                        '#8E8BE9',
+                        '#8E8BE9',
+                        '#8E8BE9',
+                        '#8E8BE9',
+                        '#8E8BE9',
+                        '#8E8BE9',
+                        '#8E8BE9',
+                        '#8E8BE9'
+                    ],
+                    borderWidth: 0
+                }]
+            },
+            options: {
+              legend:{
+                display:false
+              },
+              tooltips:{
+                enabled:false
+              },
+              onClick: function(e){
+                
+                var element = this.getElementAtEvent(e);
+                // changes only the color of the active object
+                
+              _this.dayRange = element[0]._index+1;
+          
+                },
+                scales: {
+                  xAxes: [{
+                    gridLines: {
+                        display:false
+                    }
+                  }],
+                 
+                }
+            }
+        });
+      });  
 
       var catawbaIsland = new google.maps.Marker({
         map: this.map,
@@ -157,9 +319,61 @@ export class HomePage {
         var value = _this.catawbaValues[0];
         _this.riskValue = _this.valueToString(value);
         _this.riskCategory = _this.valueToCategory(value);
+        _this.dayRange = 1;
         //init graph
 
-      });
+        _this.barChart = new Chart(_this.barCanvas.nativeElement, {
+          type: 'bar',
+            data: {
+                labels: ["T", "F", "S", "S", "M", "T", "W", "T", "F", "S", "S", "M", "T", "W"],
+                datasets: [{
+                    label: 'Severity Index',
+                    data: _this.catawbaValues,
+                    backgroundColor: [
+                        '#64639A',
+                        '#8E8BE9',
+                        '#8E8BE9',
+                        '#8E8BE9',
+                        '#8E8BE9',
+                        '#8E8BE9',
+                        '#8E8BE9',
+                        '#8E8BE9',
+                        '#8E8BE9',
+                        '#8E8BE9',
+                        '#8E8BE9',
+                        '#8E8BE9',
+                        '#8E8BE9',
+                        '#8E8BE9'
+                    ],
+                    borderWidth: 0
+                }]
+            },
+            options: {
+              legend:{
+                display:false
+              },
+              tooltips:{
+                enabled:false
+              },
+              onClick: function(e){
+                
+                var element = this.getElementAtEvent(e);
+                // changes only the color of the active object
+                
+              _this.dayRange = element[0]._index+1;
+          
+                },
+                scales: {
+                  xAxes: [{
+                    gridLines: {
+                        display:false
+                    }
+                  }],
+                 
+                }
+            }
+        });
+      }); 
 
 
 
@@ -204,6 +418,25 @@ export class HomePage {
 
     this.riskCategory = this.valueToCategory(value)
     this.riskValue = this.valueToString(value);
+
+    this.barChart.data.datasets[0].backgroundColor = [
+      '#8E8BE9',
+      '#8E8BE9',
+      '#8E8BE9',
+      '#8E8BE9',
+      '#8E8BE9',
+      '#8E8BE9',
+      '#8E8BE9',
+      '#8E8BE9',
+      '#8E8BE9',
+      '#8E8BE9',
+      '#8E8BE9',
+      '#8E8BE9',
+      '#8E8BE9',
+      '#8E8BE9'
+  ];
+  this.barChart.data.datasets[0].backgroundColor[event.detail.value-1] = '#64639A';
+  this.barChart.update();
   }
 
   populateValues() {

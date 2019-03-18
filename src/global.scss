@@ -15,8 +15,9 @@ ion-icon{
 }
 
 .inner-scroll{
-    background:var(--ion-color-light) !important;
+    background-color: var(--ion-color-light) !important;
 }
+
 
 ion-title{
     font-weight:500;
@@ -34,4 +35,20 @@ ion-title{
         width:30px;
         vertical-align:middle;
     }
+}
+
+ion-menu{
+    a{
+        color:black;
+        text-decoration:none;
+    }
+}
+
+ion-header:after {
+    background-image:none !important;
+}
+
+img.logo{
+    width: 85px;
+    margin: 20px;
 }

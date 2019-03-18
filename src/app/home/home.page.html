@@ -34,7 +34,11 @@
         <div class="riskValue">
           {{riskValue}}
         </div>
-        <ion-range  #rangeElement min="1" max="14" color="primary" snaps="true" (ionChange)="onChangeSlider($event)"></ion-range>
+        <ion-range [ngModel]="dayRange" #rangeElement min="1" max="14" color="primary" snaps="true" (ionChange)="onChangeSlider($event)"></ion-range>
+        
+    </div>
+    <div class="canvasContainer">
+        <canvas #barCanvas></canvas>
     </div>
 
 

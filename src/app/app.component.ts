@@ -12,18 +12,11 @@ export class AppComponent {
   public appPages = [
     {
       title: 'Home',
-      url: '/home',
-      icon: 'home'
+      url: '/home'
     },
     {
       title: 'About',
-      url: '/about',
-      icon: 'about'
-    },
-    {
-      title: 'NOAA',
-      url: 'https://www.noaa.gov/',
-      icon: 'net'
+      url: '/about'
     }
   ];
 

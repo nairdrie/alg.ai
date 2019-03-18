@@ -1,5 +1,7 @@
 {
   "name": "alg.ai",
-  "integrations": {},
+  "integrations": {
+    "cordova": {}
+  },
   "type": "angular"
 }
