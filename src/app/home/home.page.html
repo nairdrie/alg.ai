@@ -17,7 +17,27 @@
       <div class="text">
         Choose a location
       </div>
-      <img src="../../assets/map.png">
+      <div class="map-container">
+        <div id="map_canvas"></div> 
+      </div>
     </div>
+    <div *ngIf="selectedMarker" class="data">
+      <div class="locationTitle">
+          {{locationTitle}}
+        </div>
+        <div class="day">
+          {{day}}
+        </div>
+        <div class="riskCategory">
+          {{riskCategory}}
+        </div>
+        <div class="riskValue">
+          {{riskValue}}
+        </div>
+        <ion-range  #rangeElement min="1" max="14" color="primary" snaps="true" (ionChange)="onChangeSlider($event)"></ion-range>
+    </div>
+
+
+
 
 </ion-content>
