@@ -14,6 +14,7 @@ export class HomePage {
   @ViewChild('rangeElement', { read: ElementRef }) rangeElement:ElementRef;
 
   barChart: any;
+  
   map: any;
   locationTitle: string;
   riskValue: string;
@@ -93,7 +94,10 @@ export class HomePage {
         _this.riskCategory = _this.valueToCategory(value);
         _this.dayRange = 1;
         //init graph
-
+        if(_this.barChart){
+          _this.barChart.destroy();
+        }
+        
         _this.barChart = new Chart(_this.barCanvas.nativeElement, {
           type: 'bar',
             data: {
@@ -169,7 +173,9 @@ export class HomePage {
         _this.riskCategory = _this.valueToCategory(value);
         _this.dayRange = 1;
         //init graph
-
+        if(_this.barChart){
+          _this.barChart.destroy();
+        }
         _this.barChart = new Chart(_this.barCanvas.nativeElement, {
           type: 'bar',
             data: {
@@ -245,7 +251,9 @@ export class HomePage {
         _this.riskCategory = _this.valueToCategory(value);
         _this.dayRange = 1;
         //init graph
-
+        if(_this.barChart){
+          _this.barChart.destroy();
+        }
         _this.barChart = new Chart(_this.barCanvas.nativeElement, {
           type: 'bar',
             data: {
@@ -321,7 +329,9 @@ export class HomePage {
         _this.riskCategory = _this.valueToCategory(value);
         _this.dayRange = 1;
         //init graph
-
+        if(_this.barChart){
+          _this.barChart.destroy();
+        }
         _this.barChart = new Chart(_this.barCanvas.nativeElement, {
           type: 'bar',
             data: {
