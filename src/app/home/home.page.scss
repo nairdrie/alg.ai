@@ -56,4 +56,15 @@ canvas{
   width:100%;
 
 }
+button.download{
+  background: none;
+  border: 2px solid var(--ion-color-secondary);
+  border-radius: 48px;
+  padding: 8px;
+  text-align: center;
+  margin: 0 auto;
+  display: block;
+  font-weight: 500;
+  color: var(--ion-color-secondary);
+}
 
