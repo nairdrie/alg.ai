@@ -40,7 +40,7 @@
     <div class="canvasContainer">
         <canvas #barCanvas></canvas>
     </div>
-    <button class="download">
+    <button *ngIf="selectedMarker" class="download">
       Download Raw Data
     </button>
 
